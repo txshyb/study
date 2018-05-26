@@ -16,7 +16,7 @@ public class Main {
         Data data = futueClient.request();
         logger.info("do otherthing");
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
