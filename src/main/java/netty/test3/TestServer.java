@@ -1,4 +1,4 @@
-package netty.test2;
+package netty.test3;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -16,9 +16,8 @@ import org.slf4j.LoggerFactory;
  * @author tangxiaoshuang
  * @date 2018/5/30 9:25
  *
- * Unpooled    byte转ByteBuf工具类
  *
- *  netty通信   客户端连接服务器，如果客户端服务端在5秒内有数据交互，则保持长连接，如果超过5秒，则断开连接，客户端发送消息时再连接
+ * netty  实现心跳
  *
  *
  */
@@ -44,7 +43,6 @@ public class TestServer {
                         //设置Marshalling的编码和解码
                         ch.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingDecoder());
                         ch.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingEncoder());
-                        ch.pipeline().addLast(new ReadTimeoutHandler(5)); //5秒没有收到某客户端消息后则关掉响应通道
                         ch.pipeline().addLast(new MyHandler());  //自定义逻辑处理
                     }
                 });
@@ -71,7 +69,12 @@ public class TestServer {
         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
             super.channelRead(ctx, msg);
             logger.info("Server:{}",msg);
-            ctx.writeAndFlush("hi client");
+            if(msg instanceof RequestInfo) {  //如果是请求连接，则返回响应
+                ResponseInfo responseInfo = new ResponseInfo(Code.apply);
+                ctx.writeAndFlush(responseInfo);
+            }
+            //不是请求连接，则为心跳，打印心跳信息
+            logger.info("心跳：",msg);
         }
 
         @Override

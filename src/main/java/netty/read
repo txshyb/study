@@ -3,7 +3,10 @@ ReferenceCountUtil.release(msg); 或 ((ByteBuf) msg).release();
 
 test1   使用Marshalling 简单的传递字符串
 
-test2   使用Marshalling 传递对象
+test2   使用Marshalling 传递对象   通信连接
+
+
+test2   心跳
 
         Unpooled    byte转ByteBuf工具类
 
