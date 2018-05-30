@@ -1,0 +1,20 @@
+package customAnnotation;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+/**
+ * @author tangxiaoshuang
+ * @date 2018/5/29 14:13
+ */
+@Controller
+public class TestController {
+
+    private Logger logger = LoggerFactory.getLogger(TestController.class);
+    @RequestMapping("/test")
+    public void test(Person person) {
+        logger.info("{}",person);
+    }
+}

@@ -60,20 +60,78 @@
       <version>${project.spring.version}</version>
     </dependency>
 
-
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.7.5</version>
     </dependency>
 
+
+    <!-- netty -->
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-all</artifactId>
+      <version>4.1.12.Final</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.jboss.marshalling/jboss-marshalling-serial -->
+    <dependency>
+      <groupId>org.jboss.marshalling</groupId>
+      <artifactId>jboss-marshalling-serial</artifactId>
+      <version>1.3.0.CR9</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.jboss.marshalling/jboss-marshalling -->
+    <dependency>
+      <groupId>org.jboss.marshalling</groupId>
+      <artifactId>jboss-marshalling</artifactId>
+      <version>1.3.0.CR9</version>
+    </dependency>
+
+
+    <!-- 获取本机cpu、硬盘等信息 -->
+    <dependency>
+      <groupId>org.fusesource</groupId>
+      <artifactId>sigar</artifactId>
+      <version>1.6.4</version>
+    </dependency>
+
+    <!--<dependency>
+      <groupId>com.fnic.ruleManager</groupId>
+      <artifactId>RuleManager</artifactId>
+      <version>1.0</version>
+    </dependency>-->
+
   </dependencies>
+
+<!--  <repositories>
+    <repository>
+      <id>nexus</id>
+      <name>nexus</name>
+      <url>http://localhost:8081/nexus/content/groups/public/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>-->
 
   <build>
     <finalName>study</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
-
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.1</version>
+          <configuration>
+            <url>http://172.171.51.151:8088/manager/text</url>
+            <server>myserver</server>
+            <path>/</path>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
