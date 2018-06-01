@@ -24,8 +24,8 @@ public class TestClient {
 
 
     public static void main(String[] args) throws Exception{
-        TestClient testClient = new TestClient();
-        ChannelFuture channelFuture = testClient.getChannelFuture();
+        final TestClient testClient = new TestClient();
+        final ChannelFuture channelFuture = testClient.getChannelFuture();
         RequestInfo requestInfo = new RequestInfo("request1","内容1");
         RequestInfo requestInfo2 = new RequestInfo("request2","内容2");
         RequestInfo requestInfo3 = new RequestInfo("request3","内容3");

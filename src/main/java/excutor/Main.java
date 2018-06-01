@@ -18,6 +18,7 @@ public class Main {
         for(int i = 0; i < workers.length ;i++) {
             workers[i] = new Worker(new Task(i,"内容"+i));
         }
+/*
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
                 2,
                 3,
@@ -35,6 +36,7 @@ public class Main {
         for (int i = 0; i < workers.length; i++) {
             threadPoolExecutor.execute(workers[i]);
         }
+*/
 
     }
 }
