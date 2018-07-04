@@ -1,4 +1,4 @@
-package excutor;
+package thread.excutor;
 
 /**
  * @author tangxiaoshuang

@@ -1,4 +1,4 @@
-package designPatterns.future;
+package designpattern.future;
 
 /**
  * @author tangxiaoshuang

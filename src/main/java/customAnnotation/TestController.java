@@ -15,6 +15,7 @@ public class TestController {
     private Logger logger = LoggerFactory.getLogger(TestController.class);
     @RequestMapping("/test")
     public void test(Person person) {
+        logger.info(Thread.currentThread().getName());
         logger.info("{}",person);
     }
 }
