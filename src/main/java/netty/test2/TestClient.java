@@ -1,14 +1,11 @@
 package netty.test2;
 
-import com.sun.corba.se.internal.CosNaming.BootstrapServer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.timeout.ReadTimeoutHandler;
 import netty.MarshallingCodeCFactory;
-import nexus.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

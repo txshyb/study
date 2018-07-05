@@ -127,8 +127,8 @@
 
 <!--  <repositories>
     <repository>
-      <id>nexus</id>
-      <name>nexus</name>
+      <id>maven.nexus</id>
+      <name>maven.nexus</name>
       <url>http://localhost:8081/nexus/content/groups/public/</url>
       <releases>
         <enabled>true</enabled>
