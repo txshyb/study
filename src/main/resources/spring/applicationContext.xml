@@ -6,5 +6,6 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="javase.customAnnotation"/>
-    
+    <context:component-scan base-package="spring.cache.service"/>
+    <context:component-scan base-package="spring.cache.config"/>
 </beans>
