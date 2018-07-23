@@ -1,4 +1,4 @@
-package javase.gson;
+package javase.json.jackson;
 
 import java.io.IOException;
 
@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import entity.Person;
+import javase.json.Locale;
 import org.junit.Test;
 
 /**

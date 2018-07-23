@@ -1,11 +1,12 @@
 /**
  * Copyright &copy; 2015-2020 <a href="http://www.jeeplus.org/">JeePlus</a> All rights reserved.
  */
-package javase.gson;
+package javase.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.gson.annotations.SerializedName;
 import entity.Person;
+
+import java.util.Date;
 
 
 /**
@@ -26,6 +27,16 @@ public class Locale {
 	private String latitude;		// 场所纬度
 	private Person person;		// 安全厂商组织机构代码外键
 	private Object o;
+
+	private Date date;
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
 	public Object getO() {
 		return o;

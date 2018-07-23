@@ -1,4 +1,4 @@
-package javase.gson;
+package javase.json.gson;
 
 import com.google.gson.*;
 
@@ -15,14 +15,18 @@ public class ObjectAdapter implements JsonSerializer<Object>, JsonDeserializer<O
         if(null == jsonElement.getAsJsonObject()) {
             return "";
         }
+
+        System.out.println("deserialize");
         return jsonElement.getAsJsonObject();
     }
 
     @Override
     public JsonElement serialize(Object o, Type type, JsonSerializationContext jsonSerializationContext) {
+        System.out.println("serialize");
         if(null == o) {
             return jsonSerializationContext.serialize("");
         }
+
         return jsonSerializationContext.serialize(o);
     }
 }
