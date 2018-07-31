@@ -124,8 +124,7 @@
     </dependencies>
 
     <build>
-        <finalName>shiro</finalName>
-        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+        <finalName>shiro</finalName><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -165,6 +164,5 @@
                     </dependencies>
                 </plugin>
             </plugins>
-        </pluginManagement>
     </build>
 </project>

@@ -228,6 +228,7 @@
                         <url>http://172.171.51.151:8088/manager/text</url>
                         <server>myserver</server>
                         <path>/</path>
+                        <port>8080</port>
                     </configuration>
                 </plugin>
             </plugins>

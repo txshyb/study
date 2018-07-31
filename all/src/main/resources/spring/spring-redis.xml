@@ -31,7 +31,7 @@
 
     <bean id="testListener" class="spring.redis.listener.TestListener"></bean>
 
-    <redis:listener-container connection-factory="redisConnectionFactory" task-executor="springSessionRedisTaskExecutor">
+    <redis:listener-container connection-factory="redisConnectionFactory">
         <redis:listener ref="testListener" method="handleMessage" topic="test"/>
     </redis:listener-container>
 

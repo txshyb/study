@@ -11,12 +11,12 @@ public class TestListener {
 
     public void handleMessage(Serializable msg) {
         System.out.println(Thread.currentThread().getName());
-        for (int i=0; i<10; i++) {
-            try {
-                Thread.sleep(300);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+//        for (int i=0; i<10; i++) {
+//            try {
+//                Thread.sleep(300);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 }
