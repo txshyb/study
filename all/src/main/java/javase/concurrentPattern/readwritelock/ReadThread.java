@@ -1,4 +1,4 @@
-package javase.lock.readwrite;
+package javase.concurrentPattern.readwritelock;
 
 /**
  * @auther: tangxiaoshuang
@@ -18,7 +18,6 @@ public class ReadThread implements Runnable {
         try {
             while (true) {
                 char[] chars = shareData.read();
-             //   System.out.println(shareData.lock.readWait + "____________________________________________________________________");
                 System.out.println(Thread.currentThread().getName() + ":" + new String(chars));
             }
         } catch (Exception e) {

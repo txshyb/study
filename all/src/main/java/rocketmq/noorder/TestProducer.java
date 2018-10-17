@@ -15,7 +15,7 @@ public class TestProducer {
         try {
             defaultMQProducer.start();
 
-            for(int i = 0; i < 4; i ++) {
+            for(int i = 0; i < 5; i ++) {
                 Person p = new Person("a"+i,20+i);
                 String msg = gson.toJson(p);
                 Message message = new Message("txst","TAG1",msg.getBytes());

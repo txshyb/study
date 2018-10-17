@@ -1,4 +1,4 @@
-package javase.lock.readwrite;
+package javase.concurrentPattern.readwritelock;
 
 /**
  * @auther: tangxiaoshuang
