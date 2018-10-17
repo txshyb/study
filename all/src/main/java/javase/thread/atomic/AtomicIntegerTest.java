@@ -16,9 +16,9 @@ public class AtomicIntegerTest implements Runnable {
         return i.get();
     };
     private void add() {
-        i.addAndGet(2);
-     //   i.addAndGet(1);
-    //    i.addAndGet(1);
+        //i.addAndGet(2);
+        i.addAndGet(1);
+        i.addAndGet(1);
     }
     @Override
     public void run() {
@@ -39,7 +39,5 @@ public class AtomicIntegerTest implements Runnable {
                 System.exit(0);
             }
         }
-
-    //    System.out.println(AtomicIntegerTest.class.getClassLoader());
     }
 }

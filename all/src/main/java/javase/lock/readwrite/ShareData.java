@@ -1,4 +1,4 @@
-package javase.concurrentPattern.readwritelock;
+package javase.lock.readwrite;
 
 import java.util.Random;
 
@@ -8,7 +8,7 @@ import java.util.Random;
  * @desc:
  */
 public class ShareData {
-    private final char[] c;
+    private char[] c;
     public static final ReaderWriterLock lock = new ReaderWriterLock();
     private Random random = new Random();
 
@@ -30,12 +30,14 @@ public class ShareData {
 
     private void doWriter(String str) throws InterruptedException {
         int index = random.nextInt(str.length());
-        System.out.println(lock.writing + "____________________________________________________________________");
+        System.out.println(lock.write + "____________________________________________________________________");
         for (int i = 0; i < c.length; i++) {
             c[i] = str.charAt(index);
         }
-        Thread.sleep(5000);
-           System.out.println(lock.writing + "后____________________________________________________________________");
+        System.out.println(System.currentTimeMillis());
+        Thread.sleep(10000);
+        System.out.println(System.currentTimeMillis());
+     //   System.out.println(lock.write + "后____________________________________________________________________");
     }
 
     public char[] read() throws InterruptedException {
