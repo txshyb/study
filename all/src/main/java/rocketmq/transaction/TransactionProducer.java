@@ -38,7 +38,7 @@ public class TransactionProducer {
                 public LocalTransactionState executeLocalTransactionBranch(Message msg, Object arg) {
                     System.out.println("arg : " + arg);
                     System.out.println("Branch msg : " + msg);
-                    return LocalTransactionState.UNKNOW;  //如果返回COMMIT_MESSAGE，则此消息在在mq里是对消费端可见的，如果返回是另外两个状态则保持消息对消费端不可见，回调上面的监听方法
+                    return LocalTransactionState.ROLLBACK_MESSAGE;  //如果返回COMMIT_MESSAGE，则此消息在在mq里是对消费端可见的，如果返回是另外两个状态则保持消息对消费端不可见，回调上面的监听方法
                 }
             },"hhhh");
             System.out.println(result);

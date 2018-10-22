@@ -44,9 +44,9 @@ public class JedisConfig {
 
         Jedis jedis = new Jedis("127.0.0.1",6379);
         while(true) {
-            jedis.publish("test", "hdhd");
+            jedis.publish("A:MR", "hdhd");
             try {
-                Thread.sleep(10);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

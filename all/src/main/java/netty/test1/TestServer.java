@@ -6,6 +6,11 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.http.HttpObject;
+import io.netty.handler.codec.http.HttpRequestDecoder;
+import io.netty.handler.codec.http.HttpRequestEncoder;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.util.concurrent.EventExecutorGroup;
@@ -32,8 +37,16 @@ public class TestServer {
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingDecoder());
-                        ch.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingEncoder());
+
+     /*                   ch.pipeline().addLast(new StringDecoder());
+                        ch.pipeline().addLast(new StringEncoder());
+                        ch.pipeline().addLast(new MyHandler());
+*/
+                        /**
+                         * 获取http请求信息  上面的也可以获取，但是获取的是String类型
+                         */
+                        ch.pipeline().addLast(new HttpRequestDecoder());
+                        ch.pipeline().addLast(new HttpRequestEncoder());
                         ch.pipeline().addLast(new MyHandler());
                     }
                 });
@@ -58,7 +71,10 @@ public class TestServer {
         @Override
         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
             super.channelRead(ctx, msg);
-            logger.info("Server:{}",msg);
+//            logger.info("Server:{}",msg);
+            System.out.println(msg.getClass());
+            System.out.println(msg);
+            System.out.println();
             ctx.writeAndFlush("hi client");
         }
 
@@ -73,4 +89,5 @@ public class TestServer {
             super.exceptionCaught(ctx, cause);
         }
     }
+
 }
