@@ -5,6 +5,10 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+  <listener>
+    <listener-class>tspring.ioc.ContextLoaderListener</listener-class>
+  </listener>
+
   <servlet>
     <servlet-name>allServlet</servlet-name>
     <servlet-class>tspring.servlet.DispatcherServlet</servlet-class>
