@@ -10,6 +10,7 @@
   <modules>
     <module>shiro</module>
     <module>all</module>
+      <module>tSpring</module>
   </modules>
   <packaging>pom</packaging>
 
