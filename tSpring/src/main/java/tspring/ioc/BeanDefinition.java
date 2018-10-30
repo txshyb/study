@@ -4,6 +4,8 @@ public class BeanDefinition<T> {
 
     private T t;
 
+    private Class<T> clazz;
+
     private String className;
 
     private String aliasName;
@@ -14,6 +16,14 @@ public class BeanDefinition<T> {
 
     public void setT(T t) {
         this.t = t;
+    }
+
+    public Class<T> getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(Class<T> clazz) {
+        this.clazz = clazz;
     }
 
     public String getClassName() {
