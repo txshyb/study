@@ -6,7 +6,9 @@ import java.io.FileFilter;
 public class PackageScan {
 
     public static void scanPackage(String packagPath) {
-        File file = new File(packagPath);
+        String path = PackageScan.class.getClassLoader().getResource("").getPath();
+        String pack = packagPath.replace(".", File.separatorChar+"");
+        File file = new File(path + File.separatorChar + pack);
         File[] files = file.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
@@ -18,7 +20,11 @@ public class PackageScan {
         });
 
         for (File f : files) {
-            BeanFactory.newInstance(f.getName().replace(".class",""));
+            BeanFactory.newInstance(packagPath + "." + f.getName().replace(".class", ""));
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(PackageScan.class.getClassLoader().getResource("").getPath());
     }
 }

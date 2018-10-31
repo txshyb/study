@@ -11,7 +11,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import entity.Person;
 import javase.json.Locale;
-import org.junit.Test;
 
 /**
  * 对象中null转""
@@ -42,12 +41,10 @@ public class JsonTest {
 		return str;
 	}
 
-	@Test
 	public void test() {
 		System.out.println(getJson(new TestObject()));// TestObject必须是POJO对象
 	}
 
-	@Test
     public void test2() {
             Locale locale = new Locale();
             locale.setLatitude("ssss");

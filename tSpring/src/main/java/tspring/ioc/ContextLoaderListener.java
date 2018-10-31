@@ -3,22 +3,28 @@ package tspring.ioc;
 import tspring.Constant;
 
 import javax.servlet.*;
+import java.util.HashMap;
 import java.util.Properties;
 
 public class ContextLoaderListener implements ServletContextListener, ServletContextAttributeListener {
 
-    private String path = "classpath:applicationContext.properties";
+    private String path = "applicationContext.properties";
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        ServletContext context = sce.getServletContext();
-
         //加载配置文件
         Properties properties = doLoadProperties(path);
         //扫包
         doScanPackage(properties.getProperty(Constant.scanPackage));
         //自动装配
         autowire();
+
+        HashMap<String, BeanDefinition> beanDefinitions = Beans.getBeanDefinitions();
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+
     }
 
     private void autowire() {
@@ -35,6 +41,16 @@ public class ContextLoaderListener implements ServletContextListener, ServletCon
 
     @Override
     public void attributeAdded(ServletContextAttributeEvent event) {
+
+    }
+
+    @Override
+    public void attributeRemoved(ServletContextAttributeEvent servletContextAttributeEvent) {
+
+    }
+
+    @Override
+    public void attributeReplaced(ServletContextAttributeEvent servletContextAttributeEvent) {
 
     }
 }

@@ -20,11 +20,18 @@ public class BeanFactory {
 
         annotations = new ArrayList<>();
         annotations.add(TController.class);
-        annotations.add(TAutowire.class);
+        annotations.add(TService.class);
     }
+
+    /**
+     * 配置文件初始化对象
+     *
+     * @param name
+     * @param className
+     */
     public static void newInstance(String name, String className) {
         try {
-            Beans.addBeanDefinition(name,newBeanDefinition(name,className));
+            Beans.addBeanDefinition(name, newBeanDefinition(name, className));
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -34,7 +41,7 @@ public class BeanFactory {
         }
     }
 
-    private static BeanDefinition newBeanDefinition(String name,String className) throws IllegalAccessException, InstantiationException, ClassNotFoundException {
+    private static BeanDefinition newBeanDefinition(String name, String className) throws IllegalAccessException, InstantiationException, ClassNotFoundException {
         Class<?> clazz = Class.forName(className);
         Object o = clazz.newInstance();
         BeanDefinition beanDefinition = new BeanDefinition();
@@ -45,13 +52,19 @@ public class BeanFactory {
         return beanDefinition;
     }
 
+    /**
+     * 注解初始化对象
+     *
+     * @param className
+     */
     public static void newInstance(String className) {
         try {
             BeanDefinition beanDefinition = newBeanDefinition(className);
-            if(beanDefinition ==null) {
+            if (beanDefinition == null) {
                 return;
             }
-            Beans.addBeanDefinition(className.substring(className.lastIndexOf("."),className.length()),beanDefinition);
+            int last = className.lastIndexOf(".");
+            Beans.addBeanDefinition(className.substring(last+1, last + 2).toLowerCase() + className.substring(last + 2, className.length()), beanDefinition);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -63,11 +76,12 @@ public class BeanFactory {
 
     private static BeanDefinition newBeanDefinition(String className) throws IllegalAccessException, InstantiationException, ClassNotFoundException {
         Class<?> clazz = classLoader.loadClass(className);
-        AnnotatedType[] annotatedTypes = clazz.getAnnotatedInterfaces();
+        Annotation[] annos = clazz.getAnnotations();
 
         //没有注解的说明不是spring管理的类
-        for(AnnotatedType annotatedType : annotatedTypes) {
-            if(annotations.contains(annotatedType.getType())) {
+        for (Annotation annotation : annos) {
+            Type aClass = annotation.annotationType();
+            if (BeanFactory.annotations.contains(aClass)) {
                 break;
             }
             return null;
@@ -75,7 +89,7 @@ public class BeanFactory {
 
         Object o = clazz.newInstance();
         BeanDefinition beanDefinition = new BeanDefinition();
-        beanDefinition.setAliasName(className.substring(className.lastIndexOf("."),className.length()));
+        beanDefinition.setAliasName(className.substring(className.lastIndexOf("."), className.length()));
         beanDefinition.setClassName(className);
         beanDefinition.setClazz(clazz);
         beanDefinition.setT(o);

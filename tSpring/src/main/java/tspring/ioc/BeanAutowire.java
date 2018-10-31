@@ -8,11 +8,13 @@ import java.util.Map;
 public class BeanAutowire {
 
     public static void autowire() {
+
         HashMap<String, BeanDefinition> beanDefinitions = Beans.getBeanDefinitions();
+
         for (Map.Entry<String,BeanDefinition> entry : beanDefinitions.entrySet()) {
             BeanDefinition beanDefinition = entry.getValue();
             Class clazz = beanDefinition.getClazz();
-            Field[] fields = clazz.getFields();
+            Field[] fields = clazz.getDeclaredFields();
             for (Field field : fields) {
                 TAutowire tAutowire = field.getAnnotation(TAutowire.class);
                 if(tAutowire == null) {
@@ -23,7 +25,8 @@ public class BeanAutowire {
                 String fieldName = field.getName();
                 try {
                     //为属性赋值
-                    field.set(beanDefinition.getT(),beanDefinitions.get(fieldName).getT());
+                    Object t = beanDefinitions.get(fieldName).getT();
+                    field.set(beanDefinition.getT(),t);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
