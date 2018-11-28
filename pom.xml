@@ -11,6 +11,9 @@
         <module>shiro</module>
         <module>all</module>
         <module>tSpring</module>
+        <module>zookeeper</module>
+        <module>sso</module>
+        <module>spring-boot-seckill</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -69,6 +72,12 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>
                 <version>${project.spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.session</groupId>
+                <artifactId>spring-session-jdbc</artifactId>
+                <version>2.1.1.RELEASE</version>
             </dependency>
 
             <dependency>
@@ -132,11 +141,11 @@
                 <artifactId>ehcache-core</artifactId>
                 <version>2.5.0</version>
             </dependency>
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-redis</artifactId>
-                <version>1.8.8.RELEASE</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.data</groupId>-->
+                <!--<artifactId>spring-data-redis</artifactId>-->
+                <!--<version>1.8.8.RELEASE</version>-->
+            <!--</dependency>-->
 
 
             <!--<dependency>
@@ -151,16 +160,29 @@
                 <artifactId>spring-data-redis</artifactId>
                 <version>1.6.0.RELEASE</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>4.3.6.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>4.3.6.RELEASE</version>
+            </dependency>
+
             <dependency>
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
                 <version>2.7.3</version>
             </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.12</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>junit</groupId>-->
+                <!--<artifactId>junit</artifactId>-->
+                <!--<version>4.12</version>-->
+            <!--</dependency>-->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
