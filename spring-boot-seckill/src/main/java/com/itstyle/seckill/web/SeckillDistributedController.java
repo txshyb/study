@@ -102,6 +102,12 @@ public class SeckillDistributedController {
 		return Result.ok();
 	}
 
+	/**
+	 * 其实还是依靠数据库级别的锁（Inndb默认为行级锁）
+	 *
+	 * @param seckillId
+	 * @return
+	 */
 	@ApiOperation(value="秒杀三(Redis分布式队列-订阅监听)",nickname="科帮网")
 	@PostMapping("/startRedisQueue")
 	public Result startRedisQueue(long seckillId){

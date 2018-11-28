@@ -34,7 +34,14 @@ public class SeckillController {
 	
 	@Autowired
 	private ISeckillService seckillService;
-	
+
+	/**
+	 * 买商品前查看数据库库存是否大于0，大于 就卖
+	 * 100个商品，1000个人买，还是会1000次请求数据库  db压力很大
+	 *
+	 * @param seckillId
+	 * @return
+	 */
 	@ApiOperation(value="秒杀一(最low实现)",nickname="科帮网")
 	@PostMapping("/start")
 	public Result start(long seckillId){
@@ -68,6 +75,14 @@ public class SeckillController {
 		}
 		return Result.ok();
 	}
+
+	/**
+	 * Lock 因lock在事务代码里面，会产生脏读   没有分布式锁效果
+	 * 整段代码加锁，效率低
+	 *
+	 * @param seckillId
+	 * @return
+	 */
 	@ApiOperation(value="秒杀二(程序锁)",nickname="科帮网")
 	@PostMapping("/startLock")
 	public Result startLock(long seckillId){
@@ -97,6 +112,15 @@ public class SeckillController {
 		}
 		return Result.ok();
 	}
+
+
+	/**
+	 * Lock  使用aop 的环绕切面  使lock在事务之外  没有分布式锁效果
+	 * 整段代码加锁，效率低
+	 *
+	 * @param seckillId
+	 * @return
+	 */
 	@ApiOperation(value="秒杀三(AOP程序锁)",nickname="科帮网")
 	@PostMapping("/startAopLock")
 	public Result startAopLock(long seckillId){
@@ -126,6 +150,14 @@ public class SeckillController {
 		}
 		return Result.ok();
 	}
+
+	/**
+	 * SELECT number FROM seckill WHERE seckill_id=? FOR UPDATE 表级锁
+	 * 也有效率问题  100个商品，1000个人买，还是会1000次请求数据库  db压力很大
+	 *
+	 * @param seckillId
+	 * @return
+	 */
 	@ApiOperation(value="秒杀四(数据库悲观锁)",nickname="科帮网")
 	@PostMapping("/startDBPCC_ONE")
 	public Result startDBPCC_ONE(long seckillId){
@@ -155,6 +187,14 @@ public class SeckillController {
 		}
 		return Result.ok();
 	}
+
+
+	/**
+	 * UPDATE seckill  SET number=number-1 WHERE seckill_id=? AND number>0  使用行级锁
+	 *
+	 * @param seckillId
+	 * @return
+	 */
 	@ApiOperation(value="秒杀五(数据库悲观锁)",nickname="科帮网")
 	@PostMapping("/startDPCC_TWO")
 	public Result startDPCC_TWO(long seckillId){
@@ -184,6 +224,8 @@ public class SeckillController {
 		}
 		return Result.ok();
 	}
+
+
 	@ApiOperation(value="秒杀六(数据库乐观锁)",nickname="科帮网")
 	@PostMapping("/startDBOCC")
 	public Result startDBOCC(long seckillId){

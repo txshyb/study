@@ -176,6 +176,7 @@ public class SeckillServiceImpl implements ISeckillService {
 			dynamicQuery.save(killed);
 			return Result.ok(SeckillStatEnum.SUCCESS);
 		}else{
+			// 失败是UPDATE seckill  SET number=number-1 WHERE seckill_id=? AND number>0 返回0   即应该是number=0了  所以认为商品已抢完
 			return Result.error(SeckillStatEnum.END);
 		}
 	}
