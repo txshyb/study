@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 
+    plugins在配置文件中的位置必须符合要求，否则会报错，顺序如下:
+    properties?, settings?, 
+    typeAliases?, typeHandlers?, 
+    objectFactory?,objectWrapperFactory?, 
+    plugins?, 
+    environments?, databaseIdProvider?, mappers?
+-->
+	<settings>
+		<setting name="callSettersOnNulls" value="true"/>
+	</settings>
+<!-- 别名 -->
+	<typeAliases>
+		<!-- 	<package name="com.fnic.pearl.model"/> -->
+		<typeAlias type="com.fnic.pearl.model.quarz.QuarzInfo" alias="QuarzInfo" />
+		<typeAlias type="com.fnic.pearl.model.devManager.DevDhcp" alias="DevDhcp" />
+		<typeAlias type="com.fnic.pearl.model.sign.SignAccount"  alias="signAccount"/>
+		<typeAlias type="com.fnic.pearl.model.message.ApAlarm" alias="ApAlarm"/>
+		<typeAlias type="com.fnic.pearl.model.message.ApConfig" alias="ApConfig"/>
+		<typeAlias type="com.fnic.pearl.model.message.ApLogin" alias="ApLogin"/>
+		<typeAlias type="com.fnic.pearl.model.message.ApMsgSet" alias="ApMsgSet"/>
+		<typeAlias type="com.fnic.pearl.model.devManager.DevUpgradeRecord" alias="DevUpgradeRecord"/>
+
+		<!-- begin add by yyzhang 20161028 -->
+		<typeAlias alias="regionInfo" type="com.fnic.pearl.model.areaManager.RegionInfo" />
+		<typeAlias alias="lineInfo" type="com.fnic.pearl.model.areaManager.AppBusLineInfo" />
+		<typeAlias alias="stationInfo" type="com.fnic.pearl.model.areaManager.AppStationInfo" />
+		<typeAlias alias="busApMacInfo" type="com.fnic.pearl.model.areaManager.AppBusApMacInfo" />
+		<typeAlias alias="district" type="com.fnic.pearl.Controller.WebInterface.DisManager.District" />
+		<typeAlias alias="merBusLine"  type="com.fnic.pearl.model.areaManager.MerBusLine" />
+
+		<typeAlias alias="regionInfo" type="com.fnic.pearl.model.areaManager.RegionInfo" />
+		<typeAlias alias="merchantInfo" type="com.fnic.pearl.model.areaManager.MerchantInfo" />
+		<typeAlias alias="structInfo" type="com.fnic.pearl.model.areaManager.StructureInfo" />
+		<typeAlias alias="structMerInfo" type="com.fnic.pearl.model.areaManager.StructMerchantMappingInfo" />
+		<typeAlias alias="merchantType" type="com.fnic.pearl.model.areaManager.MerchantTypeInfo" />
+		<typeAlias alias="groupAllMerchantInfo" type="com.fnic.pearl.model.areaManager.GroupALLMerchantInfo" />
+		<typeAlias alias="groupAllMerDistrictInfo" type="com.fnic.pearl.model.areaManager.GroupAllMerDistrictInfo" />
+
+		<typeAlias alias="allMerDistrictInfo" type="com.fnic.pearl.model.areaManager.AllMerDistrictInfo" />
+
+		<typeAlias alias="disLevelInfo" type="com.fnic.pearl.model.areaManager.apBindArea.LevelInfo" />
+
+		<!-- begin add by yyzhang 20171110-->
+		<typeAlias alias="districtInfo" type="com.fnic.pearl.model.disManager.District" />
+		<typeAlias alias="merDis" type="com.fnic.pearl.model.areaFunctionDevTask.Merchant" />
+		<!-- end add by yyzhang 20171110-->
+
+		<typeAlias alias="merApInfo" type="com.fnic.pearl.model.areaManager.apBindArea.MerApInfo" />
+		<typeAlias alias="disBindApInfo" type="com.fnic.pearl.model.areaManager.apBindArea.DistrictBindApInfo" />
+		<typeAlias alias="TCouponAll" type="com.fnic.pearl.model.areaManager.TCouponAll" />
+		<typeAlias alias="areaPath" type="com.fnic.pearl.model.areaManager.AreaPath" />
+
+
+		<typeAlias alias="macWhiteList" type="com.fnic.pearl.model.whiteList.MacWhiteListInfo" />
+		<typeAlias alias="urlWhiteList" type="com.fnic.pearl.model.whiteList.UrlWhiteListInfo" />
+		<typeAlias alias="urlApply" type="com.fnic.pearl.model.whiteList.UrlApplyInfo" />
+		<typeAlias alias="countWhiteList" type="com.fnic.pearl.model.whiteList.CountWhiteListInfo" />
+
+		<!-- <typeAlias alias="plugIn" type="com.fnic.pearl.Controller.WebInterface.plugInManager.model.PlugIn" /> -->
+		<typeAlias alias="virnet" type="com.fnic.pearl.Controller.WebInterface.Virtualnet.bean.Virtualnet" />
+		<typeAlias alias="allMerDistrictInfo" type="com.fnic.pearl.model.areaManager.AllMerDistrictInfo" />
+		<!-- stgDeploy begin-->
+		<typeAlias alias="stgDeploy" type="com.fnic.pearl.model.Strategy.StgDeployInfo" />
+		<typeAlias alias="stgAccMap" type="com.fnic.pearl.model.Strategy.StgAccMappingInfo" />
+		<typeAlias alias="stgTarget" type="com.fnic.pearl.model.Strategy.StgDeployTargetInfo" />
+		<typeAlias alias="stgRegion" type="com.fnic.pearl.model.Strategy.StgDeployRegionInfo" />
+		<typeAlias alias="stgMerArea" type="com.fnic.pearl.model.Strategy.StgDeployMerAreaInfo" />
+		<!-- stgDeploy end-->
+		<!-- end add by yyzhang 20161028  -->
+		<!-- begin add by yyzhang 20170103 -->
+		<typeAlias alias="apuser" type="com.fnic.pearl.Controller.WebInterface.APManager.Model.ApUser" />
+		<typeAlias alias="groupUserInfo" type="com.fnic.pearl.Controller.WebInterface.Login.Model.GroupUserInfo" />
+		<typeAlias alias="hostSiteInfo" type="com.fnic.pearl.model.apStasAnalysis.HostSiteInfo" />
+		<typeAlias alias="aprole" type="com.fnic.pearl.Controller.WebInterface.APManager.Model.ApRole" />
+		<typeAlias alias="apmenu" type="com.fnic.pearl.Controller.WebInterface.APManager.Model.ApMenu"/>
+
+		<!-- end add by yyzhang 20170103 -->
+
+		<!-- start add by lq 20161219 for 公交首页 -->
+		<typeAlias alias="busonlineLine"
+				   type="com.fnic.pearl.model.busMap.BusonlineLine" />
+		<typeAlias alias="busonlineStation"
+				   type="com.fnic.pearl.model.busMap.BusonlineStation" />
+		<typeAlias alias="busonlineAp"
+				   type="com.fnic.pearl.model.busMap.BusonlineAp" />
+		<typeAlias alias="cityInfo"
+				   type="com.fnic.pearl.model.busMap.CityInfo" />
+		<!-- end add by lq 20161219  -->
+
+		<!-- start add by lq 20161226 for 插件 -->
+		<typeAlias alias="plugIn"
+				   type="com.fnic.pearl.model.plugInManager.PlugIn" />
+		<typeAlias alias="devPlugIn"
+				   type="com.fnic.pearl.model.plugInManager.DevPlugIn" />
+		<typeAlias alias="pluginBatch"
+				   type="com.fnic.pearl.model.plugInManager.PluginBatch" />
+		<typeAlias alias="merchantObj"
+				   type="com.fnic.pearl.model.plugInManager.MerchantObj" />
+		<typeAlias alias="pluginVersion"
+				   type="com.fnic.pearl.model.plugInManager.PluginLastVersion"/>
+		<!-- end add by lq 20161226  -->
+
+		<!-- start add by cw 20170206 for 公众号 -->
+		<typeAlias alias="publicNum" type="com.fnic.pearl.model.publicNum.PublicNum" />
+		<!-- end add by cw 20170206 for 公众号 -->
+
+		<!-- start add by cw 20170210 for 认证方式 -->
+		<typeAlias alias="authView" type="com.fnic.pearl.model.authMode.AuthView" />
+		<typeAlias alias="authInfo" type="com.fnic.pearl.model.authMode.AuthInfo" />
+		<typeAlias alias="authStruct" type="com.fnic.pearl.model.authMode.AuthStruct" />
+		<typeAlias alias="authMat" type="com.fnic.pearl.model.authMode.AuthMat" />
+		<!-- end add by cw 20170210 for 认证方式 -->
+
+		<typeAlias alias="apCustomerAccount" type="com.fnic.pearl.model.apAccount.apCustomerAccount.ApCustomerAccount"/>
+		<typeAlias alias="stamac" type="com.fnic.pearl.model.stamac.Stamac"/>
+		<typeAlias alias="apCustomerAccountExperience" type="com.fnic.pearl.model.apAccount.apCustomerAccountExperience.ApCustomerAccountExperience"/>
+		<typeAlias alias="apCustomerAccountApply" type="com.fnic.pearl.model.apAccount.apCustomerAccountApply.ApCustomerAccountApply"/>
+
+		<typeAlias alias="apStaffAccount" type="com.fnic.pearl.model.apAccount.apStaffAccount.ApStaffAccount"/>
+		<typeAlias alias="apStudentAccount" type="com.fnic.pearl.model.apAccount.apStudentAccount.ApStudentAccount"/>
+		<typeAlias alias="findStudentAccountCondition" type="com.fnic.pearl.model.apAccount.apStudentAccount.vo.FindStudentAccountCondition"/>
+		<typeAlias alias="findStudentHistoryAccountCondition" type="com.fnic.pearl.model.apAccount.apStudentAccount.vo.FindStudentHistoryAccountCondition"/>
+		<typeAlias alias="apAccountPackage" type="com.fnic.pearl.model.apAccount.apStudentAccount.ApAccountPackage"/>
+		<typeAlias alias="studentAccHistory" type="com.fnic.pearl.model.apAccount.apStudentAccount.StudentAccHistory" />
+		<typeAlias alias="findVisitorCondition" type="com.fnic.pearl.model.apAccount.apVisitorAccount.vo.FindVisitorCondition" />
+		<typeAlias alias="apVisitorAccount" type="com.fnic.pearl.model.apAccount.apVisitorAccount.ApVisitorAccount" />
+
+		<!-- start add by tangxiaoshuang 20171016  -->
+		<typeAlias alias="apMenuC" type="com.fnic.pearl.model.apManager.ApMenu" />
+		<typeAlias alias="apRoleC" type="com.fnic.pearl.model.apManager.ApRole" />
+		<!-- end add by tangxiashuang 20171016 -->
+		<typeAlias alias="adInfo" type="com.fnic.pearl.model.adManager.AdvertInfo" />
+		<typeAlias alias="adMatInfo" type="com.fnic.pearl.model.adManager.AdMatInfo" />
+	</typeAliases>
+
+
+<plugins>
+    <!-- com.github.pagehelper为PageHelper类所在包名 -->
+    <plugin interceptor="com.github.pagehelper.PageHelper">
+        <!-- 4.0.0以后版本可以不设置该参数 -->
+        <property name="dialect" value="mysql"/>
+        <!-- 该参数默认为false -->
+        <!-- 设置为true时，会将RowBounds第一个参数offset当成pageNum页码使用 -->
+        <!-- 和startPage中的pageNum效果一样-->
+        <property name="offsetAsPageNum" value="true"/>
+        <!-- 该参数默认为false -->
+        <!-- 设置为true时，使用RowBounds分页会进行count查询 -->
+        <property name="rowBoundsWithCount" value="true"/>
+        <!-- 设置为true时，如果pageSize=0或者RowBounds.limit = 0就会查询出全部的结果 -->
+        <!-- （相当于没有执行分页查询，但是返回结果仍然是Page类型）-->
+        <property name="pageSizeZero" value="true"/>
+        <!-- 3.3.0版本可用 - 分页参数合理化，默认false禁用 -->
+        <!-- 启用合理化时，如果pageNum<1会查询第一页，如果pageNum>pages会查询最后一页 -->
+        <!-- 禁用合理化时，如果pageNum<1或pageNum>pages会返回空数据 -->
+        <property name="reasonable" value="false"/>
+        <!-- 3.5.0版本可用 - 为了支持startPage(Object params)方法 -->
+        <!-- 增加了一个`params`参数来配置参数映射，用于从Map或ServletRequest中取值 -->
+        <!-- 可以配置pageNum,pageSize,count,pageSizeZero,reasonable,orderBy,不配置映射的用默认值 -->
+        <!-- 不理解该含义的前提下，不要随便复制该配置 -->
+        <property name="params" value="pageNum=pageHelperStart;pageSize=pageHelperRows;"/>
+        <!-- 支持通过Mapper接口参数来传递分页参数 -->
+        <property name="supportMethodsArguments" value="false"/>
+        <!-- always总是返回PageInfo类型,check检查返回类型是否为PageInfo,none返回Page -->
+        <property name="returnPageInfo" value="none"/>
+    </plugin>
+</plugins>
+</configuration>

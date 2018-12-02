@@ -9,6 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @desc:
  */
 public class SpringContextMain {
+
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/beanpostprocessor.xml");
         BBean bBean = applicationContext.getBean("bBean", BBean.class);

@@ -9,7 +9,8 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>
       classpath:spring/applicationContext.xml,
-      classpath:spring/spring-mvc.xml
+      classpath:spring/spring-mvc.xml,
+      classpath:spring/spring-dataSource.xml
     </param-value>
   </context-param>
 
@@ -28,7 +29,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>dispatcherServlet</servlet-name>
-    <url-pattern>*.do</url-pattern>
+    <url-pattern>/*</url-pattern>
   </servlet-mapping>
 
 

@@ -13,6 +13,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 
     <context:component-scan base-package="javase.customAnnotation"/>
     <context:component-scan base-package="spring.cache.controller"/>
+    <context:component-scan base-package="spring.beanpostprocessor.aop"/>
     <task:annotation-driven executor="executor"/>
     <task:executor id="executor" pool-size="3"/>
     <mvc:annotation-driven/>
