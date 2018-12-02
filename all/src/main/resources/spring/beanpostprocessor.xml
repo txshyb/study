@@ -10,14 +10,7 @@
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-
-    <context:property-placeholder location="classpath:redis.properties"/>
-
-    <context:component-scan base-package="javase.customAnnotation"/>
-    <context:component-scan base-package="spring.cache.service"/>
-    <context:component-scan base-package="spring.cache.config"/>
-    <context:component-scan base-package="spring.redis.config"/>
-    <context:component-scan base-package="spring.beanpostprocessor"/>
+    <context:component-scan base-package="spring.lifecycle"/>
 
     <bean name="bBean" class="spring.lifecycle.BBean" init-method="init">
         <property name="name" value="bean定义"></property>

@@ -47,7 +47,11 @@ public class SeckillDistributedController {
 
 	@Autowired
 	private RedisUtil redisUtil;
-	
+
+	/**
+	 * 获取不到锁的就直接返回了，不像SeckillController都是在等待释放锁，
+	 */
+
 	@ApiOperation(value="秒杀一(Rediss分布式锁)",nickname="科帮网")
 	@PostMapping("/startRedisLock")
 	public Result startRedisLock(long seckillId){
@@ -104,6 +108,7 @@ public class SeckillDistributedController {
 
 	/**
 	 * 其实还是依靠数据库级别的锁（Inndb默认为行级锁）
+	 * 但是redis是单机或是集群 （mysql同理)  这个是分布式锁的实现
 	 *
 	 * @param seckillId
 	 * @return
