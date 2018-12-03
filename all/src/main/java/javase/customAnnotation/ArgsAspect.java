@@ -37,12 +37,12 @@ public class ArgsAspect {
 //
 //	}
 
-	@Around("argsAspect()")
+//	@Around("argsAspect()")
 	public Object around(ProceedingJoinPoint joinPoint) {
-		Object[] args = joinPoint.getArgs();
-		for (Object obj : args) {
-			System.out.println(gson.toJson(obj));
-		}
+//		Object[] args = joinPoint.getArgs();
+//		for (Object obj : args) {
+//			System.out.println(gson.toJson(obj));
+//		}
 		Object target = joinPoint.getTarget();
 		Signature sig = joinPoint.getSignature();
 		MethodSignature ms = (MethodSignature)sig;
@@ -52,12 +52,13 @@ public class ArgsAspect {
 		try {
 			proceed = joinPoint.proceed();
 		} catch (Throwable throwable) {
+			throwable.printStackTrace();
 		}
 		logger.info("Exit {}()", sig.getName());
 		return proceed;
 	}
 
-	@Before("argsAspect()")
+//	@Before("argsAspect()")
 	public void before() {
 		System.out.println("before");
 	}
