@@ -16,6 +16,13 @@
 	
 	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*"/>
+			<mvc:exclude-mapping path="/login.do"></mvc:exclude-mapping>
+			<bean id="loginInterceptor" class=" com.sxt.sso.interceptor.SSOInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>
 
 

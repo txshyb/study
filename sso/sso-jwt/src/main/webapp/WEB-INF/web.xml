@@ -10,14 +10,14 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 
-  <filter>
-    <filter-name>ssoFilter</filter-name>
-    <filter-class>com.sxt.sso.filter.SSOFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>ssoFilter</filter-name>
-    <url-pattern>*.do</url-pattern>
-  </filter-mapping>
+  <!--<filter>-->
+    <!--<filter-name>ssoFilter</filter-name>-->
+    <!--<filter-class>com.sxt.sso.filter.SSOFilter</filter-class>-->
+  <!--</filter>-->
+  <!--<filter-mapping>-->
+    <!--<filter-name>ssoFilter</filter-name>-->
+    <!--<url-pattern>*.do</url-pattern>-->
+  <!--</filter-mapping>-->
   <filter>
     <filter-name>charSetFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
