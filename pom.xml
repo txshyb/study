@@ -14,6 +14,7 @@
         <module>zookeeper</module>
         <module>sso</module>
         <module>spring-boot-seckill</module>
+        <module>netty</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -153,6 +154,13 @@
               <artifactId>RuleManager</artifactId>
               <version>1.0</version>
             </dependency>-->
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>18.0</version>
+            </dependency>
+
 
             <!-- Redis 消息集成 -->
             <dependency>
