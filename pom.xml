@@ -15,6 +15,7 @@
         <module>sso</module>
         <module>spring-boot-seckill</module>
         <module>netty</module>
+        <module>rpc</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -31,6 +32,49 @@
         <shiro.version>1.4.0-RC2</shiro.version>
         <lib.path>${basedir}/src/main/webapp/WEB-INF/lib</lib.path>
     </properties>
+
+    <!-- nexus配置 -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>Snapshots</id>
+            <name>Snapshots</name>
+            <url>http://172.171.51.140:8888/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>Releases</id>
+            <name>Releases</name>
+            <url>http://172.171.51.140:8888/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>nexus</name>
+            <url>http://172.171.51.140:8888/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus</id>
+            <name>nexus</name>
+            <url>http://172.171.51.140:8888/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
 
     <dependencyManagement>
 
@@ -59,6 +103,7 @@
                 <artifactId>spring-core</artifactId>
                 <version>${project.spring.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
@@ -322,6 +367,22 @@
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper</artifactId>
                 <version>4.1.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>2.5.7</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>3.4.10</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -49,7 +49,7 @@ public class Client {
         List<String> children = zooKeeper.getChildren("/txs", new Watcher() {
             @Override
             public void process(WatchedEvent event) {
-                //当node子节点改变是触发
+                //当node子节点改变时触发
                 //但是zookeeper通信触发机制是有时间的，当还未触发前，urls里的值还是未变的
                 if (event.getType() == Event.EventType.NodeChildrenChanged) {
                     try {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="txsconsumer"/>
+    <dubbo:registry address="zookeeper://172.171.51.134:2181"/>
+    <dubbo:consumer check="true"/>
+    <dubbo:annotation package="consumer.dubbo"/>
+    <!--注意  如果引用的dubbo提供者路径名也刚好是一样的 这里配的是dubbo  恰好用service注解申明的提供者，
+    这里消费端端也会启动一个服务（因为引用了jar包，它的class类里也要了那个二进制   -->
+    <!--<consumer.dubbo:reference id="dubboService" interface="provider.dubbo.DubboService" timeout="2000" async="true"/>-->
+</beans>

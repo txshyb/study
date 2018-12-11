@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:consumer.dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/consumer.dubbo/dubbo.xsd">
+
+    <consumer.dubbo:application name="txsprovider" version="1.0"/>
+    <consumer.dubbo:registry address="zookeeper://172.171.51.134:2181"></consumer.dubbo:registry>
+    <consumer.dubbo:protocol name="consumer.dubbo" host="172.171.48.115" port="8099"/>
+
+    <consumer.dubbo:service interface="provider.dubbo.DubboService" ref="dubboService" />
+    <!--<consumer.dubbo:annotation package="consumer.dubbo"></consumer.dubbo:annotation>-->
+    <consumer.dubbo:provider timeout="1000"></consumer.dubbo:provider>
+    <bean name="dubboService" class="provider.dubbo.DubboServiceImpl"></bean>
+</beans>
