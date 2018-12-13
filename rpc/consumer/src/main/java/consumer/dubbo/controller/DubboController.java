@@ -1,4 +1,4 @@
-package consumer.dubbo.consumer;
+package consumer.dubbo.controller;
 
 import consumer.dubbo.test.Test;
 import org.springframework.beans.factory.annotation.Autowired;

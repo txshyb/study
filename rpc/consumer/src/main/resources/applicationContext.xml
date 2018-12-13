@@ -5,5 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-        <context:component-scan base-package="consumer.dubbo"/>
+        <context:component-scan base-package="consumer.dubbo.service"/>
+        <context:component-scan base-package="consumer.dubbo.test"/>
+        <context:component-scan base-package="com.codingapi.tx.*"/>
 </beans>
