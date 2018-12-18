@@ -1,0 +1,32 @@
+1.一个EventLoopGroup当中会包含一个或多个EventLoop
+2.一个EventLoop在它的整个生命周期当中都只会与唯一一个Thread进行绑定
+3.所有由EventLoop所处理的各种IO事件都将在它所关联的那个Thread上进行处理
+4.一个Channel在它的整个生命周期中只会注册在一个EventLoop上
+5.一个EventLoop在运行过程当中会被分配给一个或者多个Channel
+
+
+结论：
+在netty中，Channel的实现一定是线程安全的；基于此，我们可以存储一个Channel的引用，在需要向远程端点发送数据时，通过这个引用来调用Channel相应的方法；
+即便是很多线程都在使用它也不会出现多线程问题；而且消息一定是顺序发送出去（channel回吧发送数据以任务形式提交到对应的EventLoop关联的Thread上处理）
+
+在进行业务开发中，不要将长时间的耗时任务放入到EventLoop的执行队列中(会由绑定的那个Thread执行)，因为它会一直阻塞该线程所对应的所以Channel上的其他执行任务，应该使用一个专门的业务线程池
+   1.在ChannelHandler回调方法中自定义线程池处理业务
+   2.借助netty提供的向ChannelPipeline添加ChannelHandler调用的addLast方法传入EventExecutorGroup
+   
+   
+JDK提供的Future只能通过手工方式检查执行结果，而且这个操作是阻塞的；
+netty则使用ChannelFutur对其进行了增强，通过ChannelFutureListener以回调的方式来获取执行结果，去除了手工检查阻塞的操作；
+需要注意的是：ChannelFutureListener的operationComplete方法是由IO线程执行，因此这里不要执行耗时操作，或者使用线程池来完成耗时操作
+
+
+发送消息方式：
+1、写到channel中（channel.writeAndFlash）
+2、写到与ChannelHandler关联的ChannelHandlerContext中（cxt.writeAndFlash）
+区别：channel方式 消息会从ChannelPipleline的末尾开始流动；ChannelHandlerContext方式消息将从ChannelPipleline中的下一个ChannelHandler开始流动。
+结论：1、ChannelHandlerContext与ChannelHandler的关联关系永远不会改变，因此对其缓存没有任何问题。
+      2、对与Channel的同名方法来说，ChannelHandlerContext的方法将产生更短的事件流，所以在可能的情况下利用这个特性来提升应用性能。
+      
+      
+      
+使用Nio进行文件读取步骤
+1、从FileInputStream对象获取Channel 
