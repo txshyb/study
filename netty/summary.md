@@ -95,3 +95,16 @@ NIO的ByteBuffer缺点
 Netty的ByteBuf的优点
 1、存储字节的数组是动态的，其最大默认值是Integer.MAX_VALUE。这里的动态性体现在write()方法中，write()在执行时会判断buffer容量，如果不足则自动扩容。
 2、ByteBuf的读写索引完全是分开的，使用起来很方便。
+
+
+
+AtomicIntegerFieldUpdater总结   也可以用AtomicInteger
+1、更新器更新的必须是int类型变量，不能是其包装类型
+2、更新器更新的必须是volatile类型变量，确保线程之间共享变量时的立即可见性
+3、变量不能是static的，必须是实例变量，因为Unsafe。objectFieldOffset()方法不支持静态变量（CAS操作本质上是通过对象实例的偏移量来直接进行赋值）
+4、更新器只能修改它可见范围内的变量，因为更新器是通过反射来得到这个变量，如果变量不可见就会报错
+
+如果要更新的变量是包装类型，那么可以使用AtomicReferenceFieldUpdater来进行更新
+
+
+ByteBuf的引用计数
