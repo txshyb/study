@@ -30,3 +30,68 @@ netty则使用ChannelFutur对其进行了增强，通过ChannelFutureListener以
       
 使用Nio进行文件读取步骤
 1、从FileInputStream对象获取Channel 
+2、创建buffer
+3、将数据从Channel中读取到Buffer对象中
+ 
+Buffer：
+0 <= mark <= position <= limit <= capacity 
+
+flip()方法  
+1、将limit设为当前的position
+2、将position设为0
+
+clear()
+1、将limit值设为capacity
+2、将position设为0
+
+campact()
+1、将所以未读数据复制到buffer起始位置
+2、将position设为最后一个未读数据后面
+3、将limit设为capatacity
+4、现在buffer准备好了，但是不会覆盖未读的数据
+
+
+ByteBuffer    缓冲区类型
+1、heap buffer
+2、direct buffer
+
+
+Netty  ByteBuf所提供的3种缓冲区类型
+
+1、heap buffer
+2、direct buffer
+3、composite buffer
+
+heap buffer (堆缓冲区)
+最常用的类型，ByteBuf将数据存储到JVM的堆空间中，并且将实际的数据存放到byte array中来实现。
+优点：由于数据是存在JVM的堆中，因此可以快速的创建与快速的释放，并且它提供了直接访问内部字节数组的方法。
+缺点：每次读写数据时，都需将数据复制到直接缓冲区中再进行网络传输（socket发送数据到网络上都是通过直接缓冲区来发送的）
+
+DirectByteBuf （直接缓冲区）
+
+在JVM堆之外直接分配内存空间，直接缓冲区占用并不会堆的空间，因为它是由操作系统在本地内存进行的数据分配
+
+优点：在使用Socket进行数据传递时，性能非常好，因为数据直接位于操作系统的本地内存中，所以不需要才能从JVM将数据复制到直接缓冲区中，性能很好
+缺点：因为DirectByteBuf是直接在操作系统内存中，所以内存空间的分配与释放要比堆空间更复杂，而且速度要慢些
+
+Netty通过提供内存池来解决DirectByteBuf这个问题，直接缓冲区并不支持通过字节数组的方式来访问数据
+对于后端的业务消息的编解码来说，推荐使用HeapByteBuf；对于IO通信线程在读写缓冲区时，推荐使用DirectByteBuf
+
+Composite Buffer (复合缓冲区)
+类似一个缓冲区容器，可以加入HeapByteBuf和DirectByteBuf
+
+
+NIO的ByteBuffer与Netty的ByteBuf 差异对比
+1、Netty的ByteBuf采用了读写索引分离的策略（readerIndex和writeIndex），一个初始化的ByteBuf的readerIndex和writerIndex为0
+2、ByteBuf的读索引不可以大于写索引
+3、对于ByteBuf的任何读写操作都会分别单独维护读索引与写索引，maxCapacity最大容量是Integer.MAX_VALUE。
+
+NIO的ByteBuffer缺点
+1、final byte[] hb ; //这是ByteBuffer对象用于存储数据的对象声明;因为final修饰，也就是长度固定不变，一旦分配好后不能动态扩容和收缩；而且在待存储的数据字节很大
+时就有极可能出现IndexOutOfBoundsException。如果要预防这个异常，那就需要在存储之前完全确定存储字节的大小，如果ByteBuffer的空间不足，我们只有一个解决方案：创建
+一个全新的ByteBuffer对象，然后再将之前的ByteBuffer中的数据复制过去，这一切操作需要由开发者自己来手动完成。
+2、ByteBuffer只使用一个position指针来标识位置信息，在进行读写切换时就需要调用flip()方法或者是rewind()方法，使用不方便
+
+Netty的ByteBuf的优点
+1、存储字节的数组是动态的，其最大默认值是Integer.MAX_VALUE。这里的动态性体现在write()方法中，write()在执行时会判断buffer容量，如果不足则自动扩容。
+2、ByteBuf的读写索引完全是分开的，使用起来很方便。
