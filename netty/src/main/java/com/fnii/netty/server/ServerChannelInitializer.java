@@ -30,6 +30,13 @@ public class ServerChannelInitializer extends ChannelInitializer<SocketChannel> 
     @Autowired
     private ChannelInboundHandlerAdapter serverHandler;
 
+    /**
+     * 每次新建channel时（即每有一个客户端连接时）都会创建属于该channel自己的pipeline
+     * 相当于都会创建相应的ChannelHandler对象实例，除非addLast时传入的是相同的ChannelHandler
+     * 那这个ChannelHandler必须有@Shareable修饰
+     * 因为Decoder是有状态的，即它是非安全的，Decoder是不可以被@Shareable标注的
+     * @param ch
+     */
     @Override
     protected void initChannel(SocketChannel ch) {
 

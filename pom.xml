@@ -16,6 +16,7 @@
         <module>spring-boot-seckill</module>
         <module>netty</module>
         <module>rpc</module>
+        <module>logtest</module>
     </modules>
     <packaging>pom</packaging>
 

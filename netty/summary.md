@@ -51,13 +51,14 @@ campact()
 4、现在buffer准备好了，但是不会覆盖未读的数据
 
 
-ByteBuffer    缓冲区类型
+ByteBuffer    缓冲区类型  ByteBuffer是NIO里用得最多的Buffer，它包含两个实现方式：HeapByteBuffer是基于Java堆的实现，而DirectByteBuffer则使用了unsafe的API进行了堆外的实现
 1、heap buffer
 2、direct buffer
 
+![ByteBuffer 索引图解](https://note.youdao.com/yws/api/personal/file/373A7260DA514F7B965F2CDEA423281B?method=getImage&version=3630&cstk=_orpzSS_)
 
 Netty  ByteBuf所提供的3种缓冲区类型
-
+![ByteBuf 索引图解](https://note.youdao.com/yws/api/personal/file/42AA5851B10F4190855421E3E9E60A1F?method=getImage&version=3642&cstk=_orpzSS_)
 1、heap buffer
 2、direct buffer
 3、composite buffer
@@ -108,3 +109,9 @@ AtomicIntegerFieldUpdater总结   也可以用AtomicInteger
 
 
 ByteBuf的引用计数
+被引用计数包含的对象，能够显示的被垃圾回收。当初始化的时候，计数为1。retain（）方法能够增加计数，release() 方法能够减少计数，如果计数被减少到0则对象会被显示回收，
+再次访问被回收的这些对象将会抛出异常。如果一个对象实现了ReferenceCounted，并且包含有其他对象也实现来ReferenceCounted，当这个对象计数为0被回收的时候，所包含的对象同样会通过release()释放掉
+
+常用的引用计数类 AbstractReferenceCountedByteBuf     
+retain() 增加引用计数 、release()减少引用计数   都是通过自循CAS操作实现的 
+                                         
