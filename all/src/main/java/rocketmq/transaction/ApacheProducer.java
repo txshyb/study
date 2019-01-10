@@ -26,7 +26,7 @@ public class ApacheProducer {
     public static void main(String[] args) throws MQClientException {
 
         TransactionMQProducer producer = new TransactionMQProducer("transactionProducer");
-        producer.setNamesrvAddr("172.171.51.151:9876");
+        producer.setNamesrvAddr("172.171.51.134:9876");
         producer.setTransactionCheckListener(new TransactionCheckListener() {
             @Override
             public LocalTransactionState checkLocalTransactionState(MessageExt msg) {   //以下事务消息不成功（即不可见）  则回调该方法，可做重新扣款操作 成功则返回COMMIT_MESSAGE     目前版本不支持回调该方法

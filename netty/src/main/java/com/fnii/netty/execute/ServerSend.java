@@ -1,10 +1,12 @@
 package com.fnii.netty.execute;
 
+import ch.qos.logback.classic.Logger;
 import com.fnii.netty.protocol.SmartCarProtocol;
 import com.fnii.netty.server.ServerHandler;
 import com.fnii.netty.server.TcpServer;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -20,7 +22,9 @@ import java.io.UnsupportedEncodingException;
 @Component
 public class ServerSend {
 
+    org.slf4j.Logger logger = LoggerFactory.getLogger(ServerSend.class);
     public void execute(String msg) {
+        logger.info("execute|{}",msg);
         byte[] b = null;
         try {
             b = msg.getBytes("utf-8");
