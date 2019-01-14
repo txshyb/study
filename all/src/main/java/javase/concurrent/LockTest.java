@@ -16,6 +16,7 @@ public class LockTest {
                     lock.lock();
                     try {
                         Thread.sleep(10000);
+                        System.out.println(Thread.currentThread().getName());
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } finally {
@@ -25,7 +26,7 @@ public class LockTest {
             });
             thread.start();
         }
-        System.out.printf("");
+        System.out.printf("ererfd");
     }
 
 }

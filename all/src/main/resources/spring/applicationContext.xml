@@ -23,6 +23,8 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
     <context:component-scan base-package="spring.redis.config"/>
     <context:component-scan base-package="spring.beanpostprocessor.aop"/>
 
+    <context:component-scan base-package="convert"/>
+
     <bean name="bBean" class="spring.lifecycle.BBean" init-method="init">
         <property name="name" value="bean定义"></property>
     </bean>
