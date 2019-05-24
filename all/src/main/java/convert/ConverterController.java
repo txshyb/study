@@ -2,6 +2,7 @@ package convert;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author: tangxiaoshuang
@@ -17,12 +18,16 @@ public class ConverterController {
      * @param user
      */
     @RequestMapping("test")
-    public void Test(User user) {
+    @ResponseBody
+    public String Test(User user) {
         System.out.println(user);
+        return "呵呵哈哈哈";
     }
 
     @RequestMapping("test2")
-    public void test2(String user) {
+    @ResponseBody
+    public String test2(String user) {
         System.out.println(user);
+        return "呵呵哈哈哈";
     }
 }

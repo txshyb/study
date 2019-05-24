@@ -37,6 +37,17 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
             </list>
         </property>
     </bean>
+
+
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                    <property name="defaultCharset" value="utf-8"></property>
+                </bean>
+            </list>
+        </property>
+    </bean>
 <!--    <bean id="mutilpartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="10485760"/>
         <property name="defaultEncoding" value="utf-8"/>
