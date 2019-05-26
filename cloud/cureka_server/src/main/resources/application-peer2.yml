@@ -1,0 +1,17 @@
+spring:
+  profiles: peer2
+  application:
+    name:
+      eureka-server2
+server:
+  port: 8762
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+#    向自己注册  集群使用 默认为true
+#    register-with-eureka: false
+#    fetch-registry: false
+    service-url:
+      defaultZone: http://peer1:8761/eureka
