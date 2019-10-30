@@ -1,17 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$" />
+    <file type="web" url="file://$PROJECT_DIR$/all" />
+    <file type="web" url="file://$PROJECT_DIR$/logtest" />
+    <file type="web" url="file://$PROJECT_DIR$/rpc/consumer" />
+    <file type="web" url="file://$PROJECT_DIR$/rpc/provider" />
+    <file type="web" url="file://$PROJECT_DIR$/shiro" />
+    <file type="web" url="file://$PROJECT_DIR$/sso/sso-cross-domain" />
+    <file type="web" url="file://$PROJECT_DIR$/sso/sso-jwt" />
+    <file type="web" url="file://$PROJECT_DIR$/sso/sso-restful-springmvc" />
+    <file type="web" url="file://$PROJECT_DIR$/sso/sso-security" />
+    <file type="web" url="file://$PROJECT_DIR$/sso/sso-spring-session" />
+    <file type="web" url="file://$PROJECT_DIR$/tSpring" />
+    <file type="web" url="file://$PROJECT_DIR$/zookeeper" />
+  </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/cloud/cureka_client/pom.xml" />
+        <option value="$PROJECT_DIR$/cloud/eureka_ribbon_client/pom.xml" />
+        <option value="$PROJECT_DIR$/cloud/eureka_feign_client/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-test/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="false" project-jdk-name="1.7" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/out" />
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Android</id>
+          </State>
+          <State>
+            <id>InteroperabilityLintAndroid</id>
+          </State>
+          <State>
+            <id>Kotlin InteroperabilityInteroperabilityLintAndroid</id>
+          </State>
+          <State>
+            <id>LintAndroid</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/classes" />
   </component>
 </project>
