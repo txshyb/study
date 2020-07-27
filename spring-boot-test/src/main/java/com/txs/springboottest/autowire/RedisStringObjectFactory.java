@@ -8,7 +8,12 @@ import java.io.Serializable;
 /**
  * @author: tangxiaoshuang
  * @date: 2019/6/19 16:09
- * @desc: 该动态注入是按spring动态注入HttpServletRequest实现方式实现的，获取的是动态代理
+ * @desc:
+ *
+ * ObjectFactory<RedisString> 注入的是RedisString的代理对象
+ * 正在执行到RedisString的具体方法时ObjectFactory#getObject()才会被执行到
+ *
+ * 该动态注入是按spring动态注入HttpServletRequest实现方式实现的，获取的是动态代理
  * 注入时流程
  *    --->DefaultListableBeanFactory.findAutowireCandidates
  *      --->	public static Object resolveAutowiringValue(Object autowiringValue, Class<?> requiredType) {

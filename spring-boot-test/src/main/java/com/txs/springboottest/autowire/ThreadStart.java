@@ -11,7 +11,7 @@ import javax.annotation.PostConstruct;
  * @desc:
  *
  */
-@Component
+//@Component
 public class ThreadStart {
     //因为是RedisString的具体实现是根据线程来的 并且获取存储过程中没有共享变量 不会产生线程安全问题
     @Autowired TestThread testThread;
