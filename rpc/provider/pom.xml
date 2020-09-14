@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>provider</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>provider Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
@@ -128,14 +128,14 @@
                         <path>/</path>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <configuration>
-                        <attachClasses>true</attachClasses>
-                        <classesClassifier>api</classesClassifier>
-                    </configuration>
-                </plugin>
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.maven.plugins</groupId>-->
+<!--                    <artifactId>maven-war-plugin</artifactId>-->
+<!--                    <configuration>-->
+<!--                        <attachClasses>true</attachClasses>-->
+<!--                        <classesClassifier>api</classesClassifier>-->
+<!--                    </configuration>-->
+<!--                </plugin>-->
             </plugins>
         </pluginManagement>
     </build>

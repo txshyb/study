@@ -18,6 +18,7 @@
         <module>rpc</module>
         <module>logtest</module>
         <module>cloud</module>
+        <module>dubboprovider</module>
     </modules>
     <packaging>pom</packaging>
 
